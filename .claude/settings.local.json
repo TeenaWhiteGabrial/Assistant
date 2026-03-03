@@ -15,7 +15,8 @@
       "Bash(timeout 25 npx nest:*)",
       "Bash(docker-compose up:*)",
       "Bash(npm:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
