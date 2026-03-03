@@ -1,0 +1,110 @@
+// AI 个人助手 - 数据库 Schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// 用户表
+model User {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  email     String   @unique
+  password  String
+  settings  Json?    @default("{}")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  entries   Entry[]
+}
+
+// 核心记录表 - 所有用户输入的统一存储
+model Entry {
+  id             String   @id @default(uuid())
+  userId         String
+  type           EntryType
+  title          String?
+  content        String
+  structuredData Json?    @map("structured_data")
+  status         EntryStatus @default(PENDING)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reminder       Reminder?
+  bill           Bill?
+  photo          Photo?
+  attachment     Attachment?
+
+  @@index([userId, type])
+  @@index([userId, createdAt])
+}
+
+enum EntryType {
+  MEMO      // 备忘录
+  BILL      // 记账
+  DIARY     // 日报
+  PHOTO     // 照片
+  NOTE      // 笔记
+  TRIP      // 旅行规划
+}
+
+enum EntryStatus {
+  PENDING   // 待处理
+  PROCESSED // 已处理
+  FAILED    // 处理失败
+}
+
+// 提醒表
+model Reminder {
+  id          String   @id @default(uuid())
+  entryId     String   @unique
+  remindAt    DateTime
+  isCompleted Boolean  @default(false)
+  notifyMethod Json?   @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  entry       Entry    @relation(fields: [entryId], references: [id], onDelete: Cascade)
+}
+
+// 记账表
+model Bill {
+  id            String   @id @default(uuid())
+  entryId       String   @unique
+  amount        Decimal  @db.Decimal(10, 2)
+  category      String
+  merchant      String?
+  billDate      DateTime
+  paymentMethod String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  entry         Entry    @relation(fields: [entryId], references: [id], onDelete: Cascade)
+}
+
+// 照片表
+model Photo {
+  id              String   @id @default(uuid())
+  entryId         String   @unique
+  fileKey         String
+  ocrText         String?  @map("ocr_text")
+  aiDescription   String?  @map("ai_description")
+  takenAt         DateTime?
+  location        String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  entry           Entry    @relation(fields: [entryId], references: [id], onDelete: Cascade)
+}
+
+// 附件表
+model Attachment {
+  id        String   @id @default(uuid())
+  entryId   String   @unique
+  fileKey   String
+  fileName  String
+  fileSize  Int
+  mimeType  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  entry     Entry    @relation(fields: [entryId], references: [id], onDelete: Cascade)
+}
