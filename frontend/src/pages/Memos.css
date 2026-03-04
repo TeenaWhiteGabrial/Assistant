@@ -1,0 +1,38 @@
+/* Memos 页面样式 */
+
+/* 空状态虚线框 */
+.empty-dashed {
+  background: white;
+  border-radius: 20px;
+  padding: 48px;
+  text-align: center;
+  border: 2px dashed #e2e8f0;
+}
+
+.empty-dashed-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-dashed-icon span {
+  font-size: 36px;
+}
+
+.empty-dashed-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.empty-dashed-desc {
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 24px;
+}

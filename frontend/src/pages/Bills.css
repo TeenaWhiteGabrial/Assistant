@@ -1,0 +1,45 @@
+/* Bills 页面样式 */
+
+/* 分类支出查看 */
+.categories-section {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f5f9;
+}
+
+.categories-title {
+  font-weight: 600;
+  color: #475569;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+/* 账单列表 */
+.bills-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f5f9;
+  overflow: hidden;
+}
+
+.bills-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bills-title {
+  font-weight: 600;
+  color: #475569;
+  font-size: 16px;
+}
+
+/* 空状态圆形图标 - 绿色 */
+.empty-circle-icon.emerald {
+  background: linear-gradient(135deg, #d1fae5 0%, #99f6e4 100%);
+}

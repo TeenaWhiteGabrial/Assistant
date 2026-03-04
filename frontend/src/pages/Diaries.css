@@ -1,0 +1,82 @@
+/* Diaries 页面样式 */
+
+/* 本周统计网格 */
+.diaries-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (min-width: 1024px) {
+  .diaries-stats-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* 空状态圆形图标 - 紫色 */
+.empty-circle-icon.violet {
+  background: linear-gradient(135deg, #ddd6fe 0%, #e9d5ff 100%);
+}
+
+/* AI 生成卡片 */
+.ai-generate-card {
+  background: linear-gradient(135deg, #eef2ff 0%, #faf5ff 100%);
+  border-radius: 20px;
+  padding: 24px;
+  border: 1px solid #e0e7ff;
+}
+
+.ai-generate-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.ai-generate-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.ai-generate-icon span {
+  font-size: 24px;
+}
+
+.ai-generate-text {
+  flex: 1;
+}
+
+.ai-generate-title {
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.ai-generate-desc {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 16px;
+}
+
+.ai-generate-btn {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ai-generate-btn:hover {
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+  transform: scale(1.05);
+}

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './Memos.css';
 
 export default function Memos() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -6,39 +7,39 @@ export default function Memos() {
   return (
     <div className="space-y-6">
       {/* 页面头部 */}
-      <div className="flex items-center justify-between">
+      <div className="page-header-actions">
         <div>
-          <h2 className="text-2xl font-bold text-slate-800">备忘录</h2>
-          <p className="text-sm text-slate-500 mt-1">记录生活中的点点滴滴</p>
+          <h2 className="page-title">备忘录</h2>
+          <p className="page-subtitle">记录生活中的点点滴滴</p>
         </div>
-        <button className="bg-gradient-to-r from-indigo-500 to-sky-500 text-white px-5 py-2.5 rounded-xl font-medium hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-200 hover:scale-105 flex items-center gap-2">
-          <span className="text-lg">+</span>
+        <button className="btn-primary">
+          <span className="btn-icon">+</span>
           新建
         </button>
       </div>
 
       {/* 搜索框 */}
-      <div className="relative">
-        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">🔍</span>
+      <div className="search-container">
+        <span className="search-icon">🔍</span>
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="搜索备忘录..."
-          className="w-full bg-white border border-slate-200 rounded-xl pl-12 pr-4 py-3 text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+          className="search-input"
         />
       </div>
 
       {/* 空状态 */}
-      <div className="bg-white rounded-2xl p-12 text-center border-2 border-dashed border-slate-200">
-        <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center">
-          <span className="text-4xl">📝</span>
+      <div className="empty-dashed">
+        <div className="empty-dashed-icon">
+          <span>📝</span>
         </div>
-        <h3 className="text-lg font-semibold text-slate-700 mb-2">暂无备忘录</h3>
-        <p className="text-slate-500 text-sm mb-6">
+        <h3 className="empty-dashed-title">暂无备忘录</h3>
+        <p className="empty-dashed-desc">
           创建一个备忘录，记录重要事项和想法
         </p>
-        <button className="bg-gradient-to-r from-indigo-500 to-sky-500 text-white px-6 py-2.5 rounded-xl font-medium hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-200 hover:scale-105">
+        <button className="btn-primary">
           创建第一个备忘录
         </button>
       </div>
