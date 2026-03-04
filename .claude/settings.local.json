@@ -16,7 +16,8 @@
       "Bash(docker-compose up:*)",
       "Bash(npm:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git config:*)"
     ]
   }
 }
